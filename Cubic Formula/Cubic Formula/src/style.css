@@ -1,0 +1,16 @@
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
+.main {
+  margin-top: 20px;
+  background-color: pink;
+  position: relative;
+}
+
+.box {
+  height: 50;
+  width: 30;
+  rotate: 20;
+}
