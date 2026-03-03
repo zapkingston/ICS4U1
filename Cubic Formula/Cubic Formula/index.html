@@ -1,34 +1,26 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <title>Cubic Solver</title>
+    <!--Links to css-->
+    <link rel="stylesheet" href="src/style.css" />
+  </head>
 
+  <body>
+    <div class="Bigbox">
+      <h1>Cubic Solver</h1>
 
-  <style>
-    body {
-      font-family: "Times New Roman", Times, serif;
-      background-color: lightskyblue;
+      <div class="numbers">
+        <input placeholder="a-value" />
+        <input placeholder="b-value" />
+        <input placeholder="c-value" />
+        <input placeholder="d-value" />
 
-      h1 {
-        color: white;
-        margin-bottom: 30px;
-      }
+        <button id="solve">Solve Cubic</button>
+      </div>
+      <p id="message"></p>
 
-      button {
-        background-color: white;
-        color: darkblue;
-      }
-    }
-  </style>
-
-  <div class="background-box">
-    <h1>Cubic Solver</h1>
-
-    <div class="number">
-      <input placeholder="a-value" />
-      <input placeholder="b-value" />
-      <input placeholder="c-value" />
-      <input placeholder="d-value" />
-
-      <button>Solve Cubic</button>
+      <script type="module" src="src/main.ts"></script>
     </div>
-  </div>
+  </body>
 </html>
