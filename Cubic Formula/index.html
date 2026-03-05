@@ -5,10 +5,8 @@
   </head>
 
   <body>
-    <div class="Bigbox">
-      <h1>Cubic Solver</h1>
-
       <div class="numbers">
+        <h1>Cubic Solver</h1>
         <form id="cube-form">
           <label for="a-value">a:</label> 
           <input type ="number" id="a-value" name="a-value" required />
@@ -18,10 +16,11 @@
           <input type ="number" id="c-value" name="c-value" required />
           <label for="d-value">d:</label> 
           <input type ="number" id="d-value" name="d-value" required />
-        </form>
+          <label for="results"></label>
+          <label for="button">Answer:</label>
 
-        <button id="solve">Solve Cubic</button>
-      </div>
+          <input type="submit" value="Calculate" />
+        </form>
 
       <script type="module" src="src/main.ts"></script>
     </div>
