@@ -1,28 +1,41 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
+    <meta charset="UTF-8" />
     <title>Cubic Solver</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
-      <div class="numbers">
-        <h1>Cubic Solver</h1>
-        <form id="cube-form">
-          <label for="a-value">a:</label> 
-          <input type ="number" id="a-value" name="a-value" required />
-          <label for="b-value">b:</label> 
-          <input type ="number" id="b-value" name="b-value" required />
-          <label for="c-value">c:</label> 
-          <input type ="number" id="c-value" name="c-value" required />
-          <label for="d-value">d:</label> 
-          <input type ="number" id="d-value" name="d-value" required />
-          <label for="results"></label>
-          <label for="button">Answer:</label>
+    <div class="container">
+      <h1>Cubic Solver</h1>
 
-          <input type="submit" value="Calculate" />
-        </form>
+      <form id="cube-form" class="input-row">
+        <label>a:</label>
+        <input type="number" id="a-value" name="a-value" required />
+        <label>b:</label>
+        <input type="number" id="b-value" name="b-value" required />
+        <label>c:</label>
+        <input type="number" id="c-value" name="c-value" required />
+        <label>d:</label>
+        <input type="number" id="d-value" name="d-value" required />
+        <input type="submit" value="Calculate" class="button" />
+      </form>
+      <div id="results" class="results">
+        <div class="info-box">
+          <p>P: <span id="p"></span></p>
+          <p>Q: <span id="q"></span></p>
+          <p>Discriminant: <span id="disc"></span></p>
 
-      <script type="module" src="src/main.ts"></script>
+          <p>Root 1: <span id="r1"></span></p>
+          <p>Root 2: <span id="r2"></span></p>
+          <p>Root 3: <span id="r3"></span></p>
+        </div>
+
+        <canvas id="graph" width="600" height="400"></canvas>
+      </div>
     </div>
+
+    <script type="module" src="src/main.ts"></script>
   </body>
 </html>
