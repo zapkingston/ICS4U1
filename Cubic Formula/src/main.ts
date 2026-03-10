@@ -16,53 +16,58 @@ form.addEventListener("submit", (e) => {
   const c = Number(formData.get("c-value"));
   const d = Number(formData.get("d-value"));
 
-  let p = (3 * a * c - b ** 2) / (3 * a ** 2);
-  let q = (27 * a ** 2 * d - 9 * a * b * c + 2 * b ** 3) / (27 * a ** 3);
+  const p = (3 * a * c - b ** 2) / (3 * a ** 2);
+  const q = (27 * a ** 2 * d - 9 * a * b * c + 2 * b ** 3) / (27 * a ** 3);
 
   const discriminant = (q / 2) ** 2 + (p / 3) ** 3;
 
-  const u = Math.cbrt(-q / 2 + discriminant);
-  const v = Math.cbrt(-q / 2 - discriminant);
-
-  const y = u + v;
-
-  const r = Math.sqrt(-p / 3);
-
-  const theta = Math.acos(((3 * q) / (2 * p)) * Math.sqrt(-3 / p));
-
   let root1: number;
-  let root2: number;
-  let root3: number;
-
+let root2: number | null = null;
+let root3: number | null = null;
   if (discriminant < 0) {
-    root1 = y - b / (3 * a);
-    root2 = 2 * r * Math.cos((theta + 2 * Math.PI) / 3) - b / (3 * a);
-    root3 = 2 * r * Math.cos((theta + 4 * Math.PI) / 3) - b / (3 * a);
-  } else if (discriminant < 0) {
-    root1 = y - b / (3 * a);
-    root2 = 2 * r * Math.cos((theta + 2 * Math.PI) / 3) - b / (3 * a);
-    root3 = 2 * r * Math.cos((theta + 4 * Math.PI) / 3) - b / (3 * a);
-  } else if (discriminant == 0) {
-    if (p = q = 0) {
-      root1 = y - b / (3 * a);
-      root2 = y - b / (3 * a);
-      root3 = y - b / (3 * a);
-    } else if (p != 0) {
-      root1 = y - b / (3 * a);
-      root2 = y - b / (3 * a);
-      root3 = a
-    }
+    const r = Math.sqrt(-p / 3);
+    const theta = Math.acos(((3 * q) / (2 * p)) * Math.sqrt(-3 / p));
 
-  } 
-  else {
-    /* if theres no real root*/
+    const y1 = 2 * r * Math.cos(theta / 3);
+    const y2 = 2 * r * Math.cos((theta + 2 * Math.PI) / 3);
+    const y3 = 2 * r * Math.cos((theta + 4 * Math.PI) / 3);
+
+    root1 = y1 - b / (3 * a);
+    root2 = y2 - b / (3 * a);
+    root3 = y3 - b / (3 * a);
+  }
+
+  else if (discriminant > 0) {
     const u = Math.cbrt(-q / 2 + Math.sqrt(discriminant));
     const v = Math.cbrt(-q / 2 - Math.sqrt(discriminant));
 
     root1 = u + v - b / (3 * a);
-    root2 = NaN;
-    root3 = NaN;
+
+  (document.getElementById("r1") as HTMLElement).textContent =
+    root1.toFixed(4);
+
+  (document.getElementById("r2") as HTMLElement).textContent =
+    "Complex number";
+
+  (document.getElementById("r3") as HTMLElement).textContent =
+    "Complex number";
   }
+
+  else {
+    if (p === 0 && q === 0) {
+      root1 = -b / (3 * a);
+      root2 = root1;
+      root3 = root1;
+    } else {
+      const r1 = Math.cbrt(q / 2);
+      const r2 = -2 * r1;
+
+      root1 = r1 - b / (3 * a);
+      root2 = r1 - b / (3 * a);
+      root3 = r2 - b / (3 * a);
+    }
+  }
+
   results.style.display = "flex";
 
   (document.getElementById("p") as HTMLElement).textContent = p.toFixed(4);
@@ -70,15 +75,20 @@ form.addEventListener("submit", (e) => {
   (document.getElementById("disc") as HTMLElement).textContent =
     discriminant.toFixed(4);
 
-  (document.getElementById("r1") as HTMLElement).textContent = root1.toFixed(4);
-  (document.getElementById("r2") as HTMLElement).textContent = root2.toFixed(4);
-  (document.getElementById("r3") as HTMLElement).textContent = root3.toFixed(4);
+(document.getElementById("r1") as HTMLElement).textContent =
+  root1.toFixed(4);
 
-  /*shows graph*/
+(document.getElementById("r2") as HTMLElement).textContent =
+  root2 !== null ? root2.toFixed(4) : "Complex Number";
+
+(document.getElementById("r3") as HTMLElement).textContent =
+  root3 !== null ? root3.toFixed(4) : "Complex Number";
+
+  /* Graph Sketch */
   if (ctx) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    const scale = 40;
+    const scale = 15;
     const centerX = canvas.width / 2;
     const centerY = canvas.height / 2;
 
@@ -92,7 +102,6 @@ form.addEventListener("submit", (e) => {
     ctx.lineTo(centerX, canvas.height);
     ctx.stroke();
 
-    /* curve */
     ctx.beginPath();
 
     for (let px = 0; px < canvas.width; px++) {
