@@ -45,12 +45,6 @@ let root3: number | null = null;
 
   (document.getElementById("r1") as HTMLElement).textContent =
     root1.toFixed(4);
-
-  (document.getElementById("r2") as HTMLElement).textContent =
-    "Complex number";
-
-  (document.getElementById("r3") as HTMLElement).textContent =
-    "Complex number";
   }
 
   else {
@@ -84,7 +78,7 @@ let root3: number | null = null;
 (document.getElementById("r3") as HTMLElement).textContent =
   root3 !== null ? root3.toFixed(4) : "Complex Number";
 
-  /* Graph Sketch */
+  /* graph */
   if (ctx) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
