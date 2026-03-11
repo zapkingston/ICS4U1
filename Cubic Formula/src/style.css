@@ -41,7 +41,11 @@ input[type="number"] {
 .button:hover {
   background: #1e54c4;
 }
-
+.equation {
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
 .results {
   display: none;
   justify-content: center;
