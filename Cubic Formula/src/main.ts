@@ -22,8 +22,8 @@ form.addEventListener("submit", (e) => {
   const discriminant = (q / 2) ** 2 + (p / 3) ** 3;
 
   let root1: number;
-let root2: number | null = null;
-let root3: number | null = null;
+  let root2: number | null = null;
+  let root3: number | null = null;
   if (discriminant < 0) {
     const r = Math.sqrt(-p / 3);
     const theta = Math.acos(((3 * q) / (2 * p)) * Math.sqrt(-3 / p));
@@ -35,19 +35,15 @@ let root3: number | null = null;
     root1 = y1 - b / (3 * a);
     root2 = y2 - b / (3 * a);
     root3 = y3 - b / (3 * a);
-  }
-
-  else if (discriminant > 0) {
+  } else if (discriminant > 0) {
     const u = Math.cbrt(-q / 2 + Math.sqrt(discriminant));
     const v = Math.cbrt(-q / 2 - Math.sqrt(discriminant));
 
     root1 = u + v - b / (3 * a);
 
-  (document.getElementById("r1") as HTMLElement).textContent =
-    root1.toFixed(4);
-  }
-
-  else {
+    (document.getElementById("r1") as HTMLElement).textContent =
+      root1.toFixed(4);
+  } else {
     if (p === 0 && q === 0) {
       root1 = -b / (3 * a);
       root2 = root1;
@@ -61,22 +57,23 @@ let root3: number | null = null;
       root3 = r2 - b / (3 * a);
     }
   }
+  const equation = `y = ${a}x³ + ${b}x² + ${c}x + ${d}`;
 
   results.style.display = "flex";
 
-  (document.getElementById("p") as HTMLElement).textContent = p.toFixed(4);
-  (document.getElementById("q") as HTMLElement).textContent = q.toFixed(4);
+  (document.getElementById("p") as HTMLElement).textContent = p.toFixed(6);
+  (document.getElementById("q") as HTMLElement).textContent = q.toFixed(6);
+  (document.getElementById("equation") as HTMLElement).textContent = equation;
   (document.getElementById("disc") as HTMLElement).textContent =
-    discriminant.toFixed(4);
+    discriminant.toFixed(6);
 
-(document.getElementById("r1") as HTMLElement).textContent =
-  root1.toFixed(4);
+  (document.getElementById("r1") as HTMLElement).textContent = root1.toFixed(6);
 
-(document.getElementById("r2") as HTMLElement).textContent =
-  root2 !== null ? root2.toFixed(4) : "Complex Number";
+  (document.getElementById("r2") as HTMLElement).textContent =
+    root2 !== null ? root2.toFixed(6) : "Complex Number";
 
-(document.getElementById("r3") as HTMLElement).textContent =
-  root3 !== null ? root3.toFixed(4) : "Complex Number";
+  (document.getElementById("r3") as HTMLElement).textContent =
+    root3 !== null ? root3.toFixed(6) : "Complex Number";
 
   /* graph */
   if (ctx) {
