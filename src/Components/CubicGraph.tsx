@@ -54,7 +54,7 @@ export default function CubicGraph({ a, b, c, d }: Props) {
       ref={canvasRef}
       width={600}
       height={400}
-      className="bg-white rounded-lg shadow-md"
+      className="Canvas"
     />
   );
 }
