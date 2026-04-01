@@ -16,7 +16,7 @@ export default function CubicTable({
   r3,
 }: Props) {
   return (
-    <div className="bg-white p-5 rounded-lg w-52 shadow-md text-left">
+    <div className="Roots">
       <p>P: {p.toFixed(6)}</p>
       <p>Q: {q.toFixed(6)}</p>
       <p>Discriminant: {discriminant.toFixed(6)}</p>
