@@ -16,11 +16,11 @@ export default function CubicInput({ onSolve }: Props) {
   };
 
   return (
-    <form onSubmit={submit} className="flex gap-3 items-center">
+    <form onSubmit={submit} className="Inputs">
       <label>a:</label>
       <input
         type="number"
-        className="w-16 p-1 border rounded"
+        className="A"
         value={a}
         onChange={(e) => setA(e.target.value)}
         required
@@ -29,7 +29,7 @@ export default function CubicInput({ onSolve }: Props) {
       <label>b:</label>
       <input
         type="number"
-        className="w-16 p-1 border rounded"
+        className="B"
         value={b}
         onChange={(e) => setB(e.target.value)}
         required
@@ -38,7 +38,7 @@ export default function CubicInput({ onSolve }: Props) {
       <label>c:</label>
       <input
         type="number"
-        className="w-16 p-1 border rounded"
+        className="C"
         value={c}
         onChange={(e) => setC(e.target.value)}
         required
@@ -47,14 +47,14 @@ export default function CubicInput({ onSolve }: Props) {
       <label>d:</label>
       <input
         type="number"
-        className="w-16 p-1 border rounded"
+        className="D input"
         value={d}
         onChange={(e) => setD(e.target.value)}
         required
       />
 
-      <button className="bg-blue-600 text-white px-4 py-2 rounded font-bold hover:bg-blue-700">
-        Calculate
+      <button className="save">
+        Save
       </button>
     </form>
   );
