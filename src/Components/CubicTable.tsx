@@ -7,16 +7,9 @@ type Props = {
   r3: number | null;
 };
 
-export default function CubicTable({
-  p,
-  q,
-  discriminant,
-  r1,
-  r2,
-  r3,
-}: Props) {
+export default function CubicTable({ p, q, discriminant, r1, r2, r3 }: Props) {
   return (
-    <div className="Roots">
+    <div className="bg-white p-5 rounded-lg w-52 shadow-md text-left">
       <p>P: {p.toFixed(6)}</p>
       <p>Q: {q.toFixed(6)}</p>
       <p>Discriminant: {discriminant.toFixed(6)}</p>
